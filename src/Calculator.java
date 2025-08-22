@@ -17,7 +17,8 @@ public class Calculator {
     JFrame frame = new JFrame("Calculator");
     JPanel displayPanel = new JPanel();
     JLabel displayLabel = new JLabel();
-
+    JPanel buttonsPanel = new JPanel();
+    
 
 
     Calculator(){
