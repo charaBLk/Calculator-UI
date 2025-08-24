@@ -59,10 +59,11 @@ public class Calculator {
         buttonsPanel.setLayout(new GridLayout(5, 4));
         buttonsPanel.setBackground(customBlack);
         frame.add(buttonsPanel);
-
+        
         for(int i = 0; i<ButtonValues.length; i++){
             
             JButton button = new JButton();
+            buttonsPanel.add(button);
             String buttonValue = ButtonValues[i];
             button.setFont(new Font("Arial", Font.ITALIC, 60));
             button.setText(buttonValue);
@@ -158,7 +159,7 @@ public class Calculator {
 
                 }
             });
-            buttonsPanel.add(button);
+            
         }
         
         frame.setVisible(true);
@@ -176,8 +177,6 @@ public class Calculator {
             return Integer.toString(n);
         }
         return Double.toString(r);
-        
-        
     }
 }
 
