@@ -88,7 +88,39 @@ public class Calculator {
                     String buttonValue = button.getText();
 
                     if(Arrays.asList(rightSymbols).contains(buttonValue)){
+                        if ("÷×-+".contains(buttonValue)) {
+                            if(operator==null){
+                                A = displayLabel.getText();
+                                displayLabel.setText("0");
+                                B = "0";
+                            }
+                            operator=buttonValue;
+                        }
+                        else if(buttonValue=="="){
+                            if(A!=null){
+                                B = displayLabel.getText();
+                                double numA = Double.parseDouble(A);
+                                double numB = Double.parseDouble(B);
+                                double res;
 
+                                if(operator=="+"){
+                                    res = numA+numB;
+                                    displayLabel.setText(removeZeroDecimal(res));
+                                }
+                                else if(operator=="-"){
+                                    res = numA-numB;
+                                    displayLabel.setText(removeZeroDecimal(res));
+                                }else if(operator=="÷"){
+                                    res = numA/numB;
+                                    displayLabel.setText(removeZeroDecimal(res));
+                                }else if(operator=="×"){
+                                    res = numA*numB;
+                                    displayLabel.setText(removeZeroDecimal(res));
+                                }
+                                
+                                
+                            }
+                        }
                     }
                     else if (Arrays.asList(topSymbols).contains(buttonValue)) {
                         if(buttonValue=="AC"){
@@ -99,6 +131,12 @@ public class Calculator {
                             double numDouble = Double.parseDouble(displayLabel.getText());
                             
                             numDouble *= -1;
+                            displayLabel.setText(Double.toString(numDouble));
+                        }
+                        else if (buttonValue=="%") {
+                            double numDouble = Double.parseDouble(displayLabel.getText());
+                            
+                            numDouble /= 100;
                             displayLabel.setText(Double.toString(numDouble));
                         }
                     }
@@ -120,6 +158,7 @@ public class Calculator {
 
                 }
             });
+            buttonsPanel.add(button);
         }
         
         frame.setVisible(true);
@@ -129,6 +168,16 @@ public class Calculator {
         A="0";
         operator = null;
         B=null;
+    }
+    public String removeZeroDecimal(double r){
+        
+        if(r == (int)r){
+            int n = (int)r;
+            return Integer.toString(n);
+        }
+        return Double.toString(r);
+        
+        
     }
 }
 
